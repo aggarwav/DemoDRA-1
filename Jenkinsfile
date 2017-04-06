@@ -12,9 +12,9 @@ pipeline {
     environment {
     	// You need to specify 4 required environment variables first, they are going to be used for the following IBM Cloud DevOps steps
         IBM_CLOUD_DEVOPS_CREDS = credentials('xunrong_BM_CRED')
-        IBM_CLOUD_DEVOPS_ORG = 'lix@us.ibm.com'
-        IBM_CLOUD_DEVOPS_APP_NAME = 'Weather-V1-Xunrong'
-        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = '1320cec1-daaa-4b63-bf06-7001364865d2'
+        IBM_CLOUD_DEVOPS_ORG = 'aggarwav@us.ibm.com'
+        IBM_CLOUD_DEVOPS_APP_NAME = 'Weather-V1-Vijay'
+        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = '8fb946c7-c8bc-410d-9763-c1733d5c6d49'
     }
     tools {
         nodejs 'recent'
@@ -34,10 +34,10 @@ pipeline {
             post {
                 success {
                     // post build section to use "publishBuildRecord" method to publish build record
-                    publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/xunrongl/DemoDRA-1", result:"SUCCESS"
+                    publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/aggarwav/DemoDRA-1", result:"SUCCESS"
                 }
                 failure {
-                	publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/xunrongl/DemoDRA-1", result:"FAIL"
+                	publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/aggarwav/DemoDRA-1", result:"FAIL"
                 }
             }
         }
