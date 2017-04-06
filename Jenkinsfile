@@ -14,7 +14,7 @@ pipeline {
         IBM_CLOUD_DEVOPS_CREDS = credentials('3c90fe36-9a80-4a38-85ee-726cc1f5260c')
         IBM_CLOUD_DEVOPS_ORG = 'aggarwav@us.ibm.com'
         IBM_CLOUD_DEVOPS_APP_NAME = 'Weather-V1-Vijay'
-        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = '8fb946c7-c8bc-410d-9763-c1733d5c6d49'
+        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = '05572df3-01dc-441b-911d-b2202fe33f96'
     }
     tools {
         nodejs 'recent'
