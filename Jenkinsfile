@@ -12,9 +12,9 @@ pipeline {
     environment {
     	// You need to specify 4 required environment variables first, they are going to be used for the following IBM Cloud DevOps steps
         IBM_CLOUD_DEVOPS_CREDS = credentials('3c90fe36-9a80-4a38-85ee-726cc1f5260c')
-        IBM_CLOUD_DEVOPS_ORG = 'ICDemo'
-        IBM_CLOUD_DEVOPS_APP_NAME = 'Weather-V99'
-        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = '1a3cbd28-0547-45e2-80fb-3d81c0dd1881'
+        IBM_CLOUD_DEVOPS_ORG = 'aggarwav@us.ibm.com'
+        IBM_CLOUD_DEVOPS_APP_NAME = 'Weather-V10'
+        IBM_CLOUD_DEVOPS_TOOLCHAIN_ID = '05572df3-01dc-441b-911d-b2202fe33f96'
     }
     tools {
         nodejs 'recent'
@@ -34,10 +34,10 @@ pipeline {
             post {
                 success {
                     // post build section to use "publishBuildRecord" method to publish build record
-                    publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/dcroninibm/DemoDRA-Don", result:"SUCCESS"
+                    publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/aggarwav/DemoDRA-1", result:"SUCCESS"
                 }
                 failure {
-                	publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/dcroninibm/DemoDRA-Don", result:"FAIL"
+                	publishBuildRecord gitBranch: "${GIT_BRANCH}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/aggarwav/DemoDRA-1", result:"FAIL"
                 }
             }
         }
@@ -60,7 +60,7 @@ pipeline {
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
-                        cf login -u $IBM_CLOUD_DEVOPS_CREDS_USR -p $IBM_CLOUD_DEVOPS_CREDS_PSW -o $IBM_CLOUD_DEVOPS_ORG -s dev
+                        cf login -u $IBM_CLOUD_DEVOPS_CREDS_USR -p $IBM_CLOUD_DEVOPS_CREDS_PSW -o $IBM_CLOUD_DEVOPS_ORG -s staging
 
                         echo "Deploying...."
                         export CF_APP_NAME="staging-$IBM_CLOUD_DEVOPS_APP_NAME"
@@ -108,7 +108,7 @@ pipeline {
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
-                        cf login -u $IBM_CLOUD_DEVOPS_CREDS_USR -p $IBM_CLOUD_DEVOPS_CREDS_PSW -o $IBM_CLOUD_DEVOPS_ORG -s prod
+                        cf login -u $IBM_CLOUD_DEVOPS_CREDS_USR -p $IBM_CLOUD_DEVOPS_CREDS_PSW -o $IBM_CLOUD_DEVOPS_ORG -s dev
 
                         echo "Deploying...."
                         export CF_APP_NAME="prod-$IBM_CLOUD_DEVOPS_APP_NAME"
