@@ -57,7 +57,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
             	// Push the Weather App to Bluemix, staging space
-                /*
+               
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -69,7 +69,7 @@ pipeline {
                         cf push $CF_APP_NAME -n $CF_APP_NAME -m 64M -i 1
                         export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
                     '''
-                 */
+                
             }
             // post build section to use "publishDeployRecord" method to publish deploy record
             post {
@@ -88,9 +88,9 @@ pipeline {
                 APP_URL = "http://staging-${IBM_CLOUD_DEVOPS_APP_NAME}.mybluemix.net"
             }
             steps {
-                /*
+                
                 sh 'grunt fvt-test --no-color -f'
-                */
+                
             }
             // post build section to use "publishTestResult" method to publish test result
             post {
@@ -109,7 +109,7 @@ pipeline {
         stage('Deploy to Prod') {
             steps {
             	// Push the Weather App to Bluemix, production space
-                /*
+                
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -121,7 +121,7 @@ pipeline {
                         cf push $CF_APP_NAME -n $CF_APP_NAME -m 64M -i 1
                         export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
                     '''
-                */
+                
             }
             // post build section to use "publishDeployRecord" method to publish deploy record
             post {
