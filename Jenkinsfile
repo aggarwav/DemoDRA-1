@@ -44,13 +44,14 @@ pipeline {
         stage('Unit Test and Code Coverage') {
             steps {
                 sh 'grunt dev-test-cov --no-color -f'
+                sh 'ls -l ./tests/coverage/reports'
             }
             // post build section to use "publishTestResult" method to publish test result
             post {
                 always {
                     // post build section to use "publishTestResult" method to publish test result
                     publishTestResult type:'unittest', fileLocation: './mochatest.json'
-                    publishTestResult type:'code', fileLocation: './tests/coverage/reports/coverage-summary.json'
+                    publishTestResult type:'code', fileLocation: './tests/coverage/reports/lcov.info'
                 }
             }
         }
