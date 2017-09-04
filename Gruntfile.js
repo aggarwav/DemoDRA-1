@@ -112,9 +112,11 @@ module.exports = function (grunt) {
       		  src: 'tests/coverage/reports/*.json',
       		  options: {
               //type: 'html',
-              type: 'json-summary',
-        		  dir: 'tests/coverage/reports',
-              file: 'coverage-summary.json'
+              //type: 'json-summary',
+		  type: 'lcov',
+        	  dir: 'tests/coverage/reports',
+                  //file: 'coverage-summary.json'
+		  file: 'lcov.info'
               //print: 'detail'
       		  }
     	},
