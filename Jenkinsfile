@@ -51,7 +51,8 @@ pipeline {
                 always {
                     // post build section to use "publishTestResult" method to publish test result
                     publishTestResult type:'unittest', fileLocation: './mochatest.json'
-                    publishTestResult type:'code', fileLocation: './tests/coverage/reports/lcov.info'
+                    //publishTestResult type:'code', fileLocation: './tests/coverage/reports/lcov.info'
+                    publishTestResult type:'code', fileLocation: './cobertura.xml'
                 }
             }
         }
